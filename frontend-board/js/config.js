@@ -8,7 +8,7 @@ const BOARD_CONFIG = {
     appsScriptUrl: 'YOUR_APPS_SCRIPT_URL',
     
     // Masjid ID (from your Google Sheets database)
-    masjidId: 'YOUR_MASJID_ID',
+    masjidId: 'https://script.google.com/macros/s/AKfycby394Y1cVplXxBOPFWLBJc4sTZEzemacRuPc19V---gIzc9E0_4W96xxi8HcgpJE7uM/exec',
     
     // Refresh interval in milliseconds (default: 5 minutes)
     refreshInterval: 5 * 60 * 1000,
