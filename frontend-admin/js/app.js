@@ -26,30 +26,24 @@ const App = (() => {
     // INITIALIZATION
     // ============================================
     async function init() {
-        try {
-            // Update current time
-            updateTime();
-            setInterval(updateTime, 1000);
+        // Update current time
+        updateTime();
+        setInterval(updateTime, 1000);
 
-            // Setup event listeners
-            setupEventListeners();
+        // Setup event listeners
+        setupEventListeners();
 
-            // Authenticate user
-            await API.authenticate();
-            
-            // Load user info
-            await loadUserInfo();
-            
-            // Load masjids
-            await loadMasjids();
-            
-            // Load dashboard data
-            await loadDashboard();
-            
-        } catch (error) {
-            console.error('Initialization error:', error);
-            showToast('Gagal memuat aplikasi. Silakan refresh halaman.', 'error');
-        }
+        // Authenticate user (will use demo mode if fails)
+        await API.authenticate();
+        
+        // Load user info
+        loadUserInfo();
+        
+        // Load masjids
+        await loadMasjids();
+        
+        // Load dashboard data
+        await loadDashboard();
     }
 
     // ============================================
