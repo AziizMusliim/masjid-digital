@@ -6,7 +6,7 @@
 const API = (() => {
     // Configuration - Update this with your Apps Script web app URL
     const CONFIG = {
-        baseUrl: PropertiesService.getScriptProperties().getProperty('https://script.google.com/macros/s/AKfycby394Y1cVplXxBOPFWLBJc4sTZEzemacRuPc19V---gIzc9E0_4W96xxi8HcgpJE7uM/exec') || 'https://script.google.com/macros/s/AKfycby394Y1cVplXxBOPFWLBJc4sTZEzemacRuPc19V---gIzc9E0_4W96xxi8HcgpJE7uM/exec',
+        baseUrl: PropertiesService.getScriptProperties().getProperty('YOUR_APPS_SCRIPT_URL') || 'https://script.google.com/macros/s/AKfycby394Y1cVplXxBOPFWLBJc4sTZEzemacRuPc19V---gIzc9E0_4W96xxi8HcgpJE7uM/exec',
         timeout: 30000
     };
 
