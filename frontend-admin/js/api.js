@@ -6,7 +6,7 @@
 const API = (() => {
     // Configuration - Update this with your Apps Script web app URL
     const CONFIG = {
-        baseUrl: 'https://script.google.com/macros/s/AKfycby394Y1cVplXxBOPFWLBJc4sTZEzemacRuPc19V---gIzc9E0_4W96xxi8HcgpJE7uM/exec',
+        baseUrl: 'https://script.google.com/macros/s/AKfycbwGx4riyYARkVto4cpcPM8jvsJnlhf0zk97nTTWZLnkLvYx4dbAEdiJC6IZh_y1VyAA/exec',
         timeout: 30000
     };
 
