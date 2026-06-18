@@ -56,17 +56,24 @@ const API = (() => {
             return currentUser;
         } catch (error) {
             console.log('Using demo mode (not authenticated)');
-            // Return demo user for unauthenticated access
-            currentUser = {
-                id: 'demo_user',
-                email: 'demo@masjid-digital.com',
-                masjids: [{
-                    masjid_id: '1c5azS5Gy4KpxfaOQZAn0Vk4s4GDUCVrY9O1WRMZOGWE',
-                    role_id: 'super_admin'
-                }]
-            };
-            return currentUser;
+            return setDemoMode();
         }
+    }
+
+    function setDemoMode() {
+        currentUser = {
+            id: 'demo_user',
+            email: 'demo@masjid-digital.com',
+            masjids: [{
+                masjid_id: '1c5azS5Gy4KpxfaOQZAn0Vk4s4GDUCVrY9O1WRMZOGWE',
+                role_id: 'super_admin'
+            }]
+        };
+        return currentUser;
+    }
+
+    function getConfig() {
+        return CONFIG;
     }
 
     function getCurrentUser() {
@@ -268,9 +275,11 @@ const API = (() => {
     return {
         // Config
         configure: (newConfig) => Object.assign(CONFIG, newConfig),
+        getConfig,
         
         // Auth
         authenticate,
+        setDemoMode,
         getCurrentUser,
         setCurrentMasjid,
         getCurrentMasjid,

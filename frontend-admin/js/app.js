@@ -5,36 +5,108 @@
 
 const App = (() => {
     // DOM Elements
-    const elements = {
-        sidebar: document.getElementById('sidebar'),
-        sidebarToggle: document.getElementById('sidebarToggle'),
-        pageTitle: document.getElementById('pageTitle'),
-        masjidSelect: document.getElementById('masjidSelect'),
-        currentTime: document.getElementById('currentTime'),
-        userName: document.getElementById('userName'),
-        logoutBtn: document.getElementById('logoutBtn'),
-        contentArea: document.getElementById('contentArea'),
-        modal: document.getElementById('modal'),
-        modalOverlay: document.getElementById('modalOverlay'),
-        modalContent: document.getElementById('modalContent'),
-        toastContainer: document.getElementById('toastContainer'),
-        navItems: document.querySelectorAll('.nav-item'),
-        pages: document.querySelectorAll('.page')
-    };
+    let elements = {};
+
+    // State
+    let isLoggedIn = false;
 
     // ============================================
     // INITIALIZATION
     // ============================================
-    async function init() {
-        // Update current time
+    function init() {
+        // Check if already logged in
+        const savedLogin = localStorage.getItem('isLoggedIn');
+        if (savedLogin === 'true') {
+            showMainApp();
+        } else {
+            showLoginPage();
+        }
+
+        // Setup login buttons
+        setupLoginButtons();
+    }
+
+    // ============================================
+    // LOGIN PAGE
+    // ============================================
+    function showLoginPage() {
+        document.getElementById('loginPage').style.display = 'flex';
+        document.getElementById('mainApp').style.display = 'none';
+    }
+
+    function showMainApp() {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('mainApp').style.display = 'flex';
+        
+        // Initialize main app elements
+        elements = {
+            sidebar: document.getElementById('sidebar'),
+            sidebarToggle: document.getElementById('sidebarToggle'),
+            pageTitle: document.getElementById('pageTitle'),
+            masjidSelect: document.getElementById('masjidSelect'),
+            currentTime: document.getElementById('currentTime'),
+            userName: document.getElementById('userName'),
+            logoutBtn: document.getElementById('logoutBtn'),
+            contentArea: document.getElementById('contentArea'),
+            modal: document.getElementById('modal'),
+            modalOverlay: document.getElementById('modalOverlay'),
+            modalContent: document.getElementById('modalContent'),
+            toastContainer: document.getElementById('toastContainer'),
+            navItems: document.querySelectorAll('.nav-item'),
+            pages: document.querySelectorAll('.page')
+        };
+
+        // Setup main app
+        setupEventListeners();
         updateTime();
         setInterval(updateTime, 1000);
+        loadAppData();
+    }
 
-        // Setup event listeners
-        setupEventListeners();
+    function setupLoginButtons() {
+        const btnGoogle = document.getElementById('btnGoogleLogin');
+        const btnDemo = document.getElementById('btnDemoMode');
 
-        // Authenticate user (will use demo mode if fails)
-        await API.authenticate();
+        if (btnGoogle) {
+            btnGoogle.addEventListener('click', loginWithGoogle);
+        }
+
+        if (btnDemo) {
+            btnDemo.addEventListener('click', loginAsDemo);
+        }
+    }
+
+    function loginWithGoogle() {
+        // Redirect to Apps Script auth URL
+        const authUrl = API.getConfig().baseUrl + '?action=auth';
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('loginMode', 'google');
+        window.location.href = authUrl;
+    }
+
+    function loginAsDemo() {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('loginMode', 'demo');
+        showMainApp();
+    }
+
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('loginMode');
+        window.location.reload();
+    }
+
+    // ============================================
+    // LOAD APP DATA
+    // ============================================
+    async function loadAppData() {
+        // Authenticate (demo mode if not google login)
+        const loginMode = localStorage.getItem('loginMode');
+        if (loginMode === 'google') {
+            await API.authenticate();
+        } else {
+            API.setDemoMode();
+        }
         
         // Load user info
         loadUserInfo();
@@ -42,7 +114,7 @@ const App = (() => {
         // Load masjids
         await loadMasjids();
         
-        // Load dashboard data
+        // Load dashboard
         await loadDashboard();
     }
 
@@ -50,6 +122,8 @@ const App = (() => {
     // EVENT LISTENERS
     // ============================================
     function setupEventListeners() {
+        if (!elements.sidebar) return;
+
         // Sidebar toggle
         elements.sidebarToggle.addEventListener('click', toggleSidebar);
         
@@ -70,7 +144,7 @@ const App = (() => {
         });
         
         // Logout
-        elements.logoutBtn.addEventListener('click', handleLogout);
+        elements.logoutBtn.addEventListener('click', logout);
         
         // Modal close
         elements.modalOverlay.addEventListener('click', closeModal);
@@ -1027,12 +1101,6 @@ const App = (() => {
 
     function toggleSidebar() {
         elements.sidebar.classList.toggle('collapsed');
-    }
-
-    function handleLogout() {
-        if (confirm('Apakah Anda yakin ingin keluar?')) {
-            window.location.reload();
-        }
     }
 
     function showToast(message, type = 'info') {
