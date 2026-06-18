@@ -5,10 +5,10 @@
 
 const BOARD_CONFIG = {
     // Google Apps Script Web App URL
-    appsScriptUrl: 'YOUR_APPS_SCRIPT_URL',
+    appsScriptUrl: 'https://script.google.com/macros/s/AKfycby394Y1cVplXxBOPFWLBJc4sTZEzemacRuPc19V---gIzc9E0_4W96xxi8HcgpJE7uM/exec',
     
     // Masjid ID (from your Google Sheets database)
-    masjidId: 'https://script.google.com/macros/s/AKfycby394Y1cVplXxBOPFWLBJc4sTZEzemacRuPc19V---gIzc9E0_4W96xxi8HcgpJE7uM/exec',
+    masjidId: '1c5azS5Gy4KpxfaOQZAn0Vk4s4GDUCVrY9O1WRMZOGWE',
     
     // Refresh interval in milliseconds (default: 5 minutes)
     refreshInterval: 5 * 60 * 1000,
