@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temp files
+*.tmp
+*.temp
+
+# Security
+.env
+.env.local
+config.local.js
+
+# Apps Script
+.clasp.json
+appsscript.json.bak

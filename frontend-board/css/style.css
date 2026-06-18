@@ -1,0 +1,505 @@
+/* ============================================
+   PAPAN INFORMASI DIGITAL MASJID - DISPLAY STYLES
+   Public Display for Mosque Screens
+   ============================================ */
+
+/* CSS Variables - Theme Colors from PRD */
+:root {
+    --color-primary: #00563F;
+    --color-secondary: #DAA520;
+    --color-white: #FFFFFF;
+    --color-accent: #F0F0F0;
+    --color-text: #212121;
+    
+    /* Typography */
+    --font-main: 'Roboto', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: var(--font-main);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    overflow: hidden;
+}
+
+/* ============================================
+   MAIN BOARD LAYOUT
+   ============================================ */
+.digital-board {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-primary) 0%, #004d36 100%);
+}
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    margin-bottom: var(--spacing-md);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.logo-container {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.masjid-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-placeholder {
+    font-size: 40px;
+}
+
+.masjid-info {
+    text-align: left;
+}
+
+.masjid-name {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.masjid-address {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: var(--spacing-xs);
+}
+
+.header-right {
+    text-align: right;
+}
+
+.datetime-info {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 12px;
+}
+
+.current-date {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-secondary);
+}
+
+.current-time {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1;
+}
+
+/* ============================================
+   MAIN CONTENT SECTION
+   ============================================ */
+.board-main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    min-height: 0;
+}
+
+/* ============================================
+   PRAYER TIMES SECTION
+   ============================================ */
+.prayer-times-section {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text);
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 3px solid var(--color-secondary);
+}
+
+.prayer-times-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.prayer-time-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-accent);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.prayer-time-item.current {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #004d36 100%);
+    color: var(--color-white);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 86, 63, 0.3);
+}
+
+.prayer-time-item.upcoming {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+}
+
+.prayer-name {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.prayer-time {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Inter', monospace;
+}
+
+/* Iqamah Countdown */
+.iqamah-countdown {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-secondary) 0%, #c9971a 100%);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.iqamah-countdown.hidden {
+    display: none;
+}
+
+.countdown-label {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.countdown-timer {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--color-text);
+    font-family: 'Inter', monospace;
+}
+
+/* ============================================
+   SLIDESHOW SECTION
+   ============================================ */
+.slideshow-section {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.slideshow {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.slideshow-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slideshow-slide.active {
+    opacity: 1;
+}
+
+/* Announcement Slide */
+.slide-announcement {
+    background-color: var(--color-white);
+    padding: var(--spacing-xl);
+    text-align: center;
+    color: var(--color-text);
+}
+
+.slide-announcement h3 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.slide-announcement p {
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.slide-announcement img {
+    max-width: 100%;
+    max-height: 300px;
+    margin-top: var(--spacing-md);
+    border-radius: 12px;
+}
+
+/* Event Slide */
+.slide-event {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #004d36 100%);
+    padding: var(--spacing-xl);
+    text-align: center;
+    color: var(--color-white);
+}
+
+.slide-event h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.slide-event .event-speaker {
+    font-size: 22px;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.slide-event .event-details {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* Image/Video Slide */
+.slide-media {
+    background-color: #000;
+}
+
+.slide-media img,
+.slide-media video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Islamic Quote Slide */
+.slide-quote {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, #c9971a 100%);
+    padding: var(--spacing-xl);
+    text-align: center;
+    color: var(--color-text);
+}
+
+.slide-quote .arabic-text {
+    font-size: 36px;
+    font-family: 'Amiri', serif;
+    direction: rtl;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.8;
+}
+
+.slide-quote .translation {
+    font-size: 20px;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Slideshow Navigation Dots */
+.slideshow-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-md);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--color-secondary);
+    transform: scale(1.2);
+}
+
+/* ============================================
+   FOOTER SECTION
+   ============================================ */
+.board-footer {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    text-align: center;
+    margin-top: var(--spacing-md);
+}
+
+.footer-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 10px rgba(218, 165, 32, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(218, 165, 32, 0.8); }
+}
+
+.countdown-timer {
+    animation: pulse 2s infinite;
+}
+
+.prayer-time-item.current {
+    animation: glow 2s infinite;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 1200px) {
+    .board-main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    
+    .masjid-name {
+        font-size: 24px;
+    }
+    
+    .current-time {
+        font-size: 36px;
+    }
+    
+    .prayer-name,
+    .prayer-time {
+        font-size: 20px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .board-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .header-left {
+        flex-direction: column;
+    }
+    
+    .masjid-info {
+        text-align: center;
+    }
+    
+    .datetime-info {
+        text-align: center;
+    }
+    
+    .slide-announcement h3 {
+        font-size: 24px;
+    }
+    
+    .slide-announcement p {
+        font-size: 18px;
+    }
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: var(--color-secondary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    margin-top: var(--spacing-md);
+    font-size: 18px;
+    color: var(--color-white);
+}

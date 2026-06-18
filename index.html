@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papan Informasi Digital Masjid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #00563F;
+            --color-secondary: #DAA520;
+            --color-white: #FFFFFF;
+            --color-accent: #F0F0F0;
+            --color-text: #212121;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #004d36 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: var(--color-white);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: var(--color-white);
+            border-radius: 16px;
+            padding: 32px;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .card h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-primary);
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .card-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-btn:hover {
+            background-color: #004d36;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .setup-steps {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .setup-steps h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--color-secondary);
+        }
+
+        .setup-steps ol {
+            padding-left: 20px;
+        }
+
+        .setup-steps li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .setup-steps code {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🕌</div>
+        <h1>Papan Informasi Digital Masjid</h1>
+        <p class="subtitle">Sistem manajemen informasi masjid yang modern dan terintegrasi</p>
+
+        <div class="cards">
+            <a href="frontend-admin/index.html" class="card">
+                <div class="card-icon">⚙️</div>
+                <h2>Admin Panel</h2>
+                <p>Kelola jadwal sholat, pengumuman, kajian, media, dan pengaturan tampilan papan informasi.</p>
+                <span class="card-btn">Buka Admin Panel</span>
+            </a>
+
+            <a href="frontend-board/index.html" class="card">
+                <div class="card-icon">📺</div>
+                <h2>Papan Informasi</h2>
+                <p>Tampilan publik untuk ditampilkan di layar masjid. Menampilkan jadwal sholat dan pengumuman.</p>
+                <span class="card-btn">Buka Papan Informasi</span>
+            </a>
+        </div>
+
+        <div class="setup-steps">
+            <h3>📋 Panduan Setup</h3>
+            <ol>
+                <li>Buka file <code>README.md</code> untuk panduan lengkap</li>
+                <li>Setup Google Apps Script Backend terlebih dahulu</li>
+                <li>Update URL Apps Script di file <code>frontend-admin/js/api.js</code> dan <code>frontend-board/js/config.js</code></li>
+                <li>Buka Admin Panel untuk mengelola konten</li>
+                <li>Buka Papan Informasi di layar masjid</li>
+            </ol>
+        </div>
+
+        <div class="footer">
+            <p>Dibangun berdasarkan PRD Papan Informasi Digital Masjid</p>
+        </div>
+    </div>
+</body>
+</html>

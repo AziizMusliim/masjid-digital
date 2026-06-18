@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papan Informasi Digital Masjid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="digital-board">
+        <!-- Header Section -->
+        <header class="board-header">
+            <div class="header-left">
+                <div class="logo-container">
+                    <img id="masjidLogo" src="" alt="Logo Masjid" class="masjid-logo">
+                </div>
+                <div class="masjid-info">
+                    <h1 id="masjidName" class="masjid-name">Masjid Al-Hikmah</h1>
+                    <p id="masjidAddress" class="masjid-address">Jl. Raya No. 1, Jakarta</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="datetime-info">
+                    <p id="currentDate" class="current-date"></p>
+                    <p id="currentTime" class="current-time"></p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="board-main">
+            <!-- Left Section - Prayer Times -->
+            <section class="prayer-times-section">
+                <h2 class="section-title">Jadwal Sholat</h2>
+                <div id="prayerTimesList" class="prayer-times-list">
+                    <!-- Loaded dynamically -->
+                </div>
+                
+                <!-- Iqamah Countdown -->
+                <div id="iqamahCountdown" class="iqamah-countdown hidden">
+                    <div class="countdown-label">Menuju Iqamah</div>
+                    <div id="countdownTimer" class="countdown-timer">00:00</div>
+                </div>
+            </section>
+
+            <!-- Right Section - Slideshow -->
+            <section class="slideshow-section">
+                <div id="slideshow" class="slideshow">
+                    <!-- Slideshow content loaded dynamically -->
+                </div>
+                
+                <!-- Navigation Dots -->
+                <div id="slideshowDots" class="slideshow-dots">
+                    <!-- Generated dynamically -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="board-footer">
+            <p id="footerText" class="footer-text">Semoga Allah memberkahi kita semua.</p>
+        </footer>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/board.js"></script>
+</body>
+</html>
